@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <title>Фото</title>
+
+  <!-- Шрифты -->
+  <link rel="preload" href="fonts/ptsans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/ptsansbold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Стили -->
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/catalog.css">
+</head>
+
+<body>
+  <div class="layout">
+
+    <!-- ======= ШАПКА САЙТА ======= -->
+    <header class="header">
+
+      <!-- Главное навигационное меню -->
+      <nav class="nav nav--closed nav--nojs">
+        <ul class="nav_list">
+          <li class="nav_item">
+            <a class="nav_link" href="index.html">Главная</a>
+          </li>
+          <li class="nav_item">
+            <a class="nav_link nav_link--active">Фото и видео</a>
+          </li>
+          <li class="nav_item">
+            <a class="nav_link" href="#">Форма отзыва</a>
+          </li>
+          <li class="nav_item">
+            <a class="nav_link" href="#">HTML Academy</a>
+          </li>
+        </ul>
+        <button class="nav_toggle" type="button">
+          <span class="visually-hidden">Открыть меню</span>
+        </button>
+      </nav>
+
+      <!-- Логотип -->
+      <div class="header_logo">
+        <img class="header_logoTop" src="images/logo-sedona-desktop.svg" alt="">
+      </div>
+    </header>
+
+   <main class="content">
+    <section class="banner banner--small">
+      <img class="banner_text" src="images/text-sedona.svg" alt="">
+    </section>
+
+    <section class="intro intro--photo">
+      <h2 class="intro_title intro_title--large">Фото и видео</h2>
+      <p class="intro_text intro_text--photo">
+        Не можете решиться на путешествие из-за курса?
+        <br>Фотографии помогут вам забыть о политике и экономике.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="visually-hidden">Фотографии с курорта Седона</h2>
+      <ul class="gallery">
+        <li class="gallery_item gallery_item--large">
+          <a class="gallery_link" href="https://echo.htmlacademy.ru">
+            <img
+              src="img/photo-sunset-desktop@1x.jpg"
+              alt="Неродные просторы">
+          </a>
+          <div class="gallery_caption">
+              <p class="gallery_title">Неродные просторы</p>
+              <p class="gallery_author">Автор фото: Борис</p>
+            <span class="gallery_like gallery_like--four">
+              <svg class="gallery_likeIcon" width="23" height="21">
+                <use xlink:href="#icon-like"></use>
+              </svg>
+              1350
+            </span>
+          </div>
+        </li>
+
+        <li class="gallery_item">
+          <a class="gallery_link" href="https://echo.htmlacademy.ru">
+            <img
+              src="img/photo-cactus-desktop@1x.jpg"
+              alt="Местная растительность">
+          </a>
+          <div class="gallery_caption">
+              <p class="gallery_title">Местная растительность</p>
+              <p class="gallery_author">Автор фото: Сергей</p>
+            <span class="gallery_like gallery_like--three">
+              <svg class="gallery_likeIcon" width="23" height="21">
+                <use xlink:href="#icon-like"></use>
+              </svg>
+              143
+            </span>
+          </div>
+        </li>
+
+        <li class="gallery_item">
+          <a class="gallery_link" href="https://echo.htmlacademy.ru">
+            <img
+              src="images/catalog/photo-roads-desktop@1x.jpg"
+              alt="Дорога на север">
+          </a>
+          <div class="gallery_caption">
+              <p class="gallery_title">Дорога на север</p>
+              <p class="gallery_author">Автор фото: Петр</p>
+            <span class="gallery_like gallery_like--two">
+              <svg class="gallery_likeIcon" width="23" height="21">
+                <use xlink:href="#icon-like"></use>
+              </svg>
+              96
+            </span>
+          </div>
+        </li>
+
+        <li class="gallery_item">
+          <a class="gallery_link" href="#">
+            <img
+              src="images/catalog/photo-bridge-desktop@1x.jpg"
+              alt="Мост дьявола">
+          </a>
+          <div class="gallery_caption">
+              <p class="gallery_title">Мост дьявола</p>
+              <p class="gallery_author">Автор фото: Антон</p>
+            <span class="gallery_like gallery_like--three">
+              <svg class="gallery_likeIcon" width="23" height="21">
+                <use xlink:href="#icon-like"></use>
+              </svg>
+              254
+            </span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="video">
+      <h2 class="video_title">Все еще сомневаетесь?</h2>
+      <p class="video_text">
+        Смотрите видеопрезентацию и скорее за билетами, пока
+        <br>они не подорожали в очередной раз!
+      </p>
+
+      <section class="video_player">
+        <h2 class="visually-hidden">Весёлая дорога на курорт Седона</h2>
+
+        <img
+          class="video_screen"
+          src="images/catalog/video-desktop@1x.jpg"
+          alt="Видео презентация">
+      </section>
+    </section>
+  </main>
+
+    <!-- ======= ПОДВАЛ ======= -->
+    <footer class="footer">
+      <h3 class="footer_tag">#visitsedona</h3>
+
+      <!-- Социальные ссылки -->
+      <div class="footer_social">
+        <div class="socials">
+          <a class="socials_item" href="https://vk.com" aria-label="ВКонтакте">
+            <img class="socials_icon" src="images/VK.svg" alt="VKontakte">
+          </a>
+          <a class="socials_item" href="https://t.me" aria-label="Телеграм">
+            <img class="socials_icon" src="images/TG.svg" alt="Telegram">
+          </a>
+          <a class="socials_item" href="https://youtube.com" aria-label="Ютуб">
+            <img class="socials_icon" src="images/icon-youtube.svg" alt="YouTube">
+          </a>
+        </div>
+      </div>
+
+      <!-- Копирайт -->
+      <p class="footer_company">
+        <a class="footer_companyLink" href="#">
+          Разработано
+          <img
+            class="footer_companyIcon"
+            src="images/logo-htmlacademy.svg"
+          >
+        </a>
+      </p>
+    </footer>
+
+  </div>
+
+</body>
+
+</html>
