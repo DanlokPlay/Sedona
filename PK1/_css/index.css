@@ -1,0 +1,179 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #85007e, #00158b);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Контейнеры*/
+.app {
+    width: 100%;
+    max-width: 420px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+    /* ограничение высоты */
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Ввод задачи */
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus {
+    border-color: #667eea;
+}
+
+/* Кнопки */
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#addBtn {
+    background: #667eea;
+    color: white;
+    font-size: 18px;
+}
+
+#addBtn:hover {
+    background: #5a67d8;
+}
+
+#clearCompleted {
+    background: #ff6b6b;
+    color: white;
+}
+
+#clearCompleted:hover {
+    background: #e55050;
+}
+
+.actions button {
+    background: none;
+    font-size: 14px;
+}
+
+.actions button:hover {
+    opacity: 0.6;
+}
+
+/* Фильтр и сортировка */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    gap: 3px;
+}
+
+select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* Список задач */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+
+    overflow-y: auto;
+    flex: 1;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #f7f7f7;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+    transition: 0.2s;
+}
+
+/* Фикс скрола */
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Состояние задачи */
+.completed span {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+/* Приоритеты */
+.high {
+    border-left: 5px solid #ff4d4d;
+}
+
+.medium {
+    border-left: 5px solid #ffa500;
+}
+
+.low {
+    border-left: 5px solid #4caf50;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+/* Анимация */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
