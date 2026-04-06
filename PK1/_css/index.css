@@ -1,179 +1,140 @@
+/* БАЗА */
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #85007e, #00158b);
-    height: 100vh;
+    font-family: system-ui, sans-serif;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+    padding: 20px;
 }
 
-/* Контейнеры*/
+/* КОНТЕЙНЕР */
 .app {
     width: 100%;
     max-width: 420px;
 }
 
 .card {
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
 
-    /* ограничение высоты */
-    max-height: 90vh;
     display: flex;
     flex-direction: column;
+    height: 90vh;
 }
 
+/* ЗАГОЛОВОК */
 h1 {
+    margin: 0 0 15px;
     text-align: center;
-    margin-bottom: 20px;
+    font-size: 18px;
 }
 
-/* Ввод задачи */
+/* INPUT */
 .input-group {
     display: flex;
-    gap: 10px;
+    gap: 8px;
+}
+
+input,
+select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
 }
 
 input {
     flex: 1;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    outline: none;
-    transition: 0.2s;
 }
 
-input:focus {
-    border-color: #667eea;
-}
-
-/* Кнопки */
+/* КНОПКИ */
 button {
     border: none;
-    border-radius: 10px;
-    padding: 10px 14px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: 0.2s;
 }
 
+/* добавить */
 #addBtn {
-    background: #667eea;
+    background: #6366f1;
     color: white;
-    font-size: 18px;
+    padding: 0 14px;
 }
 
-#addBtn:hover {
-    background: #5a67d8;
-}
-
+/* очистить */
 #clearCompleted {
-    background: #ff6b6b;
+    background: #ef4444;
     color: white;
+    padding: 8px 12px;
 }
 
-#clearCompleted:hover {
-    background: #e55050;
-}
-
+/* действия */
 .actions button {
     background: none;
-    font-size: 14px;
 }
 
-.actions button:hover {
-    opacity: 0.6;
-}
-
-/* Фильтр и сортировка */
+/* ФИЛЬТРЫ */
 .controls {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
     margin-top: 10px;
-}
-
-.control-group {
-    display: flex;
-    flex-direction: column;
     font-size: 12px;
-    gap: 3px;
 }
 
-select {
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-}
-
-/* Список задач */
+/* СПИСОК */
 ul {
     list-style: none;
     padding: 0;
-    margin-top: 20px;
+    margin: 15px 0 0;
 
-    overflow-y: auto;
     flex: 1;
+    overflow-y: auto;
 }
 
+/* ЗАДАЧА */
 li {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
 
-    background: #f7f7f7;
     padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 
-    transition: 0.2s;
+    background: #f3f4f6;
+    border-radius: 8px;
+    border-left: 4px solid transparent;
 }
 
-/* Фикс скрола */
-li:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-}
-
-/* Состояние задачи */
+/* состояния */
 .completed span {
     text-decoration: line-through;
-    color: #aaa;
+    color: #9ca3af;
 }
 
-/* Приоритеты */
-.high {
-    border-left: 5px solid #ff4d4d;
-}
+/* приоритеты */
+.low { border-left-color: #22c55e; }
+.medium { border-left-color: #f59e0b; }
+.high { border-left-color: #ef4444; }
 
-.medium {
-    border-left: 5px solid #ffa500;
-}
-
-.low {
-    border-left: 5px solid #4caf50;
-}
-
+/* FOOTER */
 .footer {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-top: 10px;
+    font-size: 20px;
 }
 
-/* Анимация */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* DRAG */
+.dragging {
+    opacity: 0.5;
 }

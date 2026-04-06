@@ -186,6 +186,7 @@ function addTask() {
     }
 
     tasks.push({
+        id: Date.now(),
         text,
         completed: false,
         priority: prioritySelect.value,
