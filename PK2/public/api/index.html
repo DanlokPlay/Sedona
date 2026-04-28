@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PK2 JSON View</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Consolas, 'Courier New', monospace;
+        background: #0c111b;
+        color: #eaf0fb;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        padding: 24px;
+        background:
+          radial-gradient(circle at top, rgba(67, 85, 130, 0.35), transparent 32%),
+          linear-gradient(180deg, #111827 0%, #0b1120 100%);
+      }
+
+      .panel {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid rgba(118, 132, 168, 0.28);
+        border-radius: 24px;
+        background: rgba(16, 22, 35, 0.96);
+        box-shadow: 0 30px 70px rgba(4, 7, 15, 0.45);
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+      }
+
+      p {
+        margin: 0 0 16px;
+        color: #9ca8c2;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+
+      button,
+      a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(118, 132, 168, 0.26);
+        background: rgba(24, 31, 47, 0.9);
+        color: #d7e5ff;
+        text-decoration: none;
+        cursor: pointer;
+        font: inherit;
+      }
+
+      button.primary {
+        color: #071220;
+        border-color: #7fb4ff;
+        background: linear-gradient(135deg, #7cb8ff, #5fe1d9);
+      }
+
+      pre {
+        margin: 0;
+        padding: 18px;
+        overflow: auto;
+        border-radius: 18px;
+        border: 1px solid rgba(118, 132, 168, 0.2);
+        background: rgba(12, 18, 29, 0.92);
+        color: #dfe8fb;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .note {
+        margin-top: 14px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="panel">
+      <h1>JSON View</h1>
+      <p>Локальное представление задач из браузерного хранилища текущего пользователя.</p>
+
+      <div class="actions">
+        <button class="primary" id="refreshButton" type="button">Обновить</button>
+        <button id="downloadButton" type="button">Скачать JSON</button>
+        <a href="../">Вернуться в приложение</a>
+      </div>
+
+      <pre id="output">[]</pre>
+      <p class="note">Это не серверный API. Страница показывает данные из localStorage в этом браузере.</p>
+    </main>
+
+    <script>
+      const STORAGE_KEY = 'pk2-static-tasks';
+      const output = document.getElementById('output');
+      const refreshButton = document.getElementById('refreshButton');
+      const downloadButton = document.getElementById('downloadButton');
+
+      function readTasks() {
+        try {
+          const rawTasks = window.localStorage.getItem(STORAGE_KEY);
+          return rawTasks ? JSON.parse(rawTasks) : [];
+        } catch {
+          return [];
+        }
+      }
+
+      function renderTasks() {
+        output.textContent = JSON.stringify(readTasks(), null, 2);
+      }
+
+      refreshButton.addEventListener('click', renderTasks);
+
+      downloadButton.addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify(readTasks(), null, 2)], {
+          type: 'application/json',
+        });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'tasks.json';
+        link.click();
+        URL.revokeObjectURL(url);
+      });
+
+      renderTasks();
+    </script>
+  </body>
+</html>

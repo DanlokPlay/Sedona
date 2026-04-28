@@ -1,0 +1,526 @@
+.app {
+  min-height: 100vh;
+  padding: 20px;
+  display: grid;
+  place-items: center;
+}
+
+.todo {
+  width: min(780px, 100%);
+  height: min(860px, calc(100vh - 40px));
+  min-height: 620px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid rgba(118, 132, 168, 0.28);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(25, 31, 45, 0.96), rgba(15, 20, 31, 0.98));
+  box-shadow:
+    0 30px 70px rgba(4, 7, 15, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.todo__header,
+.toolbar,
+.toolbar__actions,
+.todo__footer,
+.task,
+.task__side,
+.task__actions,
+.task__row,
+.todo__meta {
+  display: flex;
+  gap: 12px;
+}
+
+.todo__header,
+.toolbar,
+.todo__footer,
+.task {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo__header h1 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1;
+  color: #f6f8fc;
+}
+
+.todo__summary,
+.todo__footer,
+.task__hint {
+  color: #8f9ab3;
+}
+
+.todo__summary {
+  margin: 8px 0 0;
+}
+
+.todo__summary strong {
+  color: #eef3ff;
+}
+
+.status,
+.link-button,
+.chip,
+.badge,
+.button {
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+.status,
+.link-button,
+.chip,
+.button {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid rgba(118, 132, 168, 0.26);
+  background: rgba(24, 31, 47, 0.9);
+}
+
+.status,
+.link-button,
+.chip,
+.button,
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status {
+  color: #dbe6ff;
+}
+
+.status--loading,
+.status--saving {
+  color: #ffd87d;
+  background: rgba(78, 58, 19, 0.65);
+  border-color: rgba(255, 197, 82, 0.22);
+}
+
+.status--ready {
+  color: #89f0c7;
+  background: rgba(20, 71, 53, 0.62);
+  border-color: rgba(78, 230, 167, 0.22);
+}
+
+.status--error {
+  color: #ffb2b2;
+  background: rgba(91, 28, 38, 0.72);
+  border-color: rgba(255, 120, 120, 0.28);
+}
+
+.link-button {
+  color: #d7e5ff;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.link-button:hover,
+.chip:hover,
+.button:hover:not(:disabled) {
+  background: rgba(38, 48, 73, 0.95);
+}
+
+.composer,
+.task__edit {
+  display: grid;
+  gap: 12px;
+}
+
+.composer {
+  grid-template-columns: minmax(0, 1fr) 180px auto;
+}
+
+.composer input,
+.composer select,
+.toolbar select,
+.task__edit input {
+  min-height: 46px;
+  width: 100%;
+  padding: 0 14px;
+  border: 1px solid rgba(118, 132, 168, 0.24);
+  border-radius: 14px;
+  background: rgba(16, 22, 35, 0.95);
+  color: #f5f7fb;
+}
+
+.composer input::placeholder,
+.task__edit input::placeholder {
+  color: #6f7b96;
+}
+
+.composer input:focus,
+.composer select:focus,
+.toolbar select:focus,
+.task__edit input:focus {
+  outline: 2px solid rgba(93, 146, 255, 0.28);
+  border-color: rgba(98, 149, 255, 0.64);
+}
+
+.message {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+.message--error,
+.task__error {
+  color: #ffb5b5;
+}
+
+.message--error {
+  background: rgba(93, 28, 38, 0.6);
+  border: 1px solid rgba(255, 120, 120, 0.2);
+}
+
+.toolbar {
+  flex-wrap: wrap;
+}
+
+.toolbar__filters,
+.task-list {
+  display: flex;
+  gap: 10px;
+}
+
+.toolbar__filters {
+  flex-wrap: wrap;
+}
+
+.toolbar__actions {
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.chip {
+  cursor: pointer;
+  color: #d2dbef;
+}
+
+.chip--active,
+.button--primary {
+  color: #071220;
+  border-color: #7fb4ff;
+  background: linear-gradient(135deg, #7cb8ff, #5fe1d9);
+}
+
+.button {
+  cursor: pointer;
+  color: #d5ddef;
+}
+
+.button--primary {
+  color: #071220;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.button--ghost {
+  color: #c7d1e7;
+}
+
+.todo__viewport {
+  flex: 1;
+  min-height: 340px;
+  padding: 8px;
+  border: 1px solid rgba(118, 132, 168, 0.2);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(12, 18, 29, 0.92), rgba(17, 23, 36, 0.88));
+  overflow: hidden;
+}
+
+.empty-state {
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+}
+
+.empty-state__card {
+  max-width: 320px;
+  padding: 20px 22px;
+  border: 1px dashed rgba(127, 147, 185, 0.32);
+  border-radius: 18px;
+  background: rgba(23, 30, 46, 0.72);
+  text-align: center;
+  color: #9ca8c2;
+}
+
+.empty-state__card p {
+  margin: 0;
+}
+
+.task-list {
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0 4px 0 0;
+  list-style: none;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(117, 149, 216, 0.55) transparent;
+}
+
+.task-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(117, 149, 216, 0.45);
+}
+
+.task {
+  padding: 14px 16px;
+  border: 1px solid rgba(118, 132, 168, 0.18);
+  border-left: 4px solid #60708f;
+  border-radius: 18px;
+  background: rgba(26, 33, 49, 0.92);
+}
+
+.task--low {
+  border-left-color: #22c55e;
+}
+
+.task--medium {
+  border-left-color: #f59e0b;
+}
+
+.task--high {
+  border-left-color: #ef4444;
+}
+
+.task--completed .task__text {
+  color: #71809d;
+  text-decoration: line-through;
+}
+
+.task--dragging {
+  opacity: 0.55;
+}
+
+.task--target {
+  outline: 2px solid rgba(124, 184, 255, 0.36);
+}
+
+.task__main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.task__main input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #78b3ff;
+}
+
+.task__text {
+  color: #f3f6fd;
+  word-break: break-word;
+}
+
+.task__side {
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.badge {
+  min-height: 30px;
+  padding: 0 12px;
+  font-weight: 600;
+}
+
+.badge--low {
+  color: #a8f0bb;
+  background: rgba(22, 101, 52, 0.42);
+}
+
+.badge--medium {
+  color: #ffd98a;
+  background: rgba(120, 72, 11, 0.44);
+}
+
+.badge--high {
+  color: #ffb0a8;
+  background: rgba(127, 29, 29, 0.42);
+}
+
+.task__edit {
+  width: 100%;
+}
+
+.task__row {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.todo__footer {
+  padding-top: 4px;
+  font-size: 14px;
+}
+
+@media (max-width: 720px) {
+  .app {
+    padding: 12px;
+  }
+
+  .todo {
+    height: calc(100svh - 24px);
+    min-height: calc(100svh - 24px);
+    padding: 14px;
+    gap: 10px;
+    border-radius: 22px;
+  }
+
+  .composer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .composer > input {
+    grid-column: 1 / -1;
+  }
+
+  .todo__header h1 {
+    font-size: 26px;
+  }
+
+  .todo__summary,
+  .todo__footer,
+  .task__hint {
+    font-size: 13px;
+  }
+
+  .todo__summary {
+    margin-top: 4px;
+  }
+
+  .status,
+  .link-button,
+  .chip,
+  .button {
+    min-height: 34px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .composer input,
+  .composer select,
+  .toolbar select,
+  .task__edit input {
+    min-height: 40px;
+    padding: 0 12px;
+  }
+
+  .toolbar {
+    gap: 8px;
+  }
+
+  .toolbar__filters {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .toolbar__actions {
+    width: 100%;
+    margin-left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .chip {
+    width: 100%;
+  }
+
+  .todo__viewport {
+    flex: 0 0 60svh;
+    min-height: 60svh;
+    padding: 6px;
+    border-radius: 18px;
+  }
+
+  .task-list {
+    gap: 8px;
+  }
+
+  .task {
+    padding: 12px;
+  }
+
+  .empty-state__card {
+    width: 100%;
+    max-width: 280px;
+    padding: 16px;
+  }
+
+  .todo__footer {
+    padding-top: 0;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .todo__header,
+  .task,
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .todo__meta,
+  .toolbar__actions,
+  .task__side,
+  .task__actions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 420px) {
+  .todo {
+    padding: 12px;
+    gap: 8px;
+    border-radius: 18px;
+  }
+
+  .todo__header h1 {
+    font-size: 24px;
+  }
+
+  .todo__meta {
+    gap: 8px;
+  }
+
+  .task__side,
+  .task__actions {
+    gap: 6px;
+  }
+
+  .badge,
+  .status,
+  .link-button,
+  .chip,
+  .button {
+    font-size: 12px;
+  }
+}
